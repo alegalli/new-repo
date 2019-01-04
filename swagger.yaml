@@ -1,0 +1,53 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: "Test api"
+  description: Get info on courses.
+host: limitless-sands-28242.herokuapp.com
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /courses:
+    x-summary: Course management
+    get:
+      summary: List All Courses
+      responses:
+        200:
+          description: Successful Response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Course'
+
+    post:
+      description: Create a course
+      summary: Create a course
+      parameters:
+        - name: course_name
+          in: body
+          required: true
+          schema:
+            type: integer
+      responses:
+        201:
+          description: ''
+          schema:
+            $ref: '#/definitions/Course'
+
+definitions:
+  Course:
+    title: some titme
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    required:
+      - id
+      - name
